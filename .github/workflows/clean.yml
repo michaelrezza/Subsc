@@ -1,0 +1,22 @@
+name: Clean Expired Subscriptions
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # هر ساعت یکبار
+  workflow_dispatch:
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install
+      - name: Run cleaner script
+        run: node cleanExpired.js
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: path/to/serviceAccount.json

@@ -1,0 +1,7 @@
+- name: Remove expired files from GitHub
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git rm files-to-delete/*
+          git commit -m "Remove expired subscriptions"
+          git push

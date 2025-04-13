@@ -1,0 +1,26 @@
+name: Clean Expired Subscriptions
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # اجرا روزانه ساعت ۰۰:۰۰ UTC
+  workflow_dispatch:     # اجازه اجرای دستی
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script to clean expired subs
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: node clean-expired.js

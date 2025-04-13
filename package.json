@@ -1,13 +1,14 @@
 {
-    "name": "auto-firestore-cleaner",
-    "version": "1.0.0",
-    "description": "Automatically deactivates expired VPN subscriptions from Firestore.",
-    "main": "scripts/cleanExpiredSubscriptions.js",
-    "type": "module",
-    "scripts": {
-      "clean": "node scripts/cleanExpiredSubscriptions.js"
-    },
-    "dependencies": {
-      "firebase-admin": "^11.10.1"
-    }
+  "name": "auto-firestore-cleaner",
+  "version": "1.0.0",
+  "description": "Automatically deactivates expired VPN subscriptions from Firestore and removes them from GitHub.",
+  "main": "scripts/cleanExpiredLinks.js",
+  "type": "module",
+  "scripts": {
+    "clean": "node scripts/cleanExpiredLinks.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.10.1",
+    "@octokit/rest": "^20.0.0"
   }
+}
